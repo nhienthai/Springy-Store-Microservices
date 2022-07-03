@@ -5,8 +5,9 @@ server:
         include-binding-errors: always
 
 spring:
-    profiles:
-        active: native
+    config:
+        activate:
+            on-profile: native
     application:
         name: config-server
     cloud:
@@ -29,6 +30,8 @@ logging:
         root: info
 ---
 spring:
-    profiles: docker
+    config:
+        activate:
+            on-profile: docker
     cloud:
         config.server.native.searchLocations: file:/config/repo

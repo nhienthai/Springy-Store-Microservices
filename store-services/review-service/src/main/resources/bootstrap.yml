@@ -8,6 +8,8 @@ CONFIG_SERVER_PWD: dev-pwd
 
 spring:
   application.name: review
+  config:
+    import: "optional:configserver:"
   cloud.config:
     fail-fast: true
     retry:
@@ -18,7 +20,8 @@ spring:
     uri: http://${CONFIG_SERVER_USR}:${CONFIG_SERVER_PWD}@${app.config-server.host}:${app.config-server.port}
 
 ---
-spring.profiles: docker
+spring:
+  profiles: docker
 
 app:
   config-server:

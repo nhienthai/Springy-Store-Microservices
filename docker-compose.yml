@@ -81,7 +81,7 @@ services:
   gateway:
     build: store-cloud-infra/edge-server
     ports:
-      - "8443:8443"
+      - "80:80"
     environment:
       # - SPRING_PROFILES_ACTIVE=external-OAuth-Provider
       - SPRING_PROFILES_ACTIVE=docker
@@ -97,7 +97,7 @@ services:
       - config-server
       - eureka
       - auth-server
-    restart: on-failure
+    #restart: on-failure
   ## End - Edge Server definition
 
   ## Start - Auth Server definition
@@ -147,7 +147,7 @@ services:
   ## Start - MySql database definition
   ### $ mysql -uroot -h127.0.0.1 -p
   mysql:
-    image: mysql:8.0.20
+    image: mysql:latest
     ports:
       - "3306:3306"
     environment:
